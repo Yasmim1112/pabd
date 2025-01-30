@@ -188,7 +188,7 @@ public class TriangulosUI extends javax.swing.JFrame {
         double p = (a + b + c) / 2;
         double area = Math.sqrt(p * (p - a) * (p - b) * (p - a));
         
-        if ( a < (b + c) || b < (a + c) || c < (b + a)) {
+        if ( a < (b + c) && b < (a + c) && c < (b + a)) {
             if (a == b && b == c) {
                 tipoLabel5.setText("Tipo encontrado: Triangulo Equilatero");
                   areaLabel.setText("Área: " + area);
