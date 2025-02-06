@@ -4,6 +4,9 @@
  */
 package ui_3inf2v;
 
+import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 20221074010060
@@ -175,6 +178,48 @@ public class TriangulosUI extends javax.swing.JFrame {
 // public static boolean isTriangle(double a, double b, double c);
     private void calcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcActionPerformed
         // TODO add your handling code here:
+        
+        if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("")) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Preencha todos os lados!",
+                "ERRO",
+                JOptionPane.ERROR_MESSAGE);
+            
+        } else {
+         double a = Double.parseDouble(jTextField1.getText());
+         double b = Double.parseDouble(jTextField2.getText());
+          double c = Double.parseDouble(jTextField3.getText());
+          
+          //MÁGICA
+          
+          tipoLabel5.setText("Tipo encontrado...");
+          areaLabel.setText("Área encontrada...");
+
+         
+        double p = (a + b + c) / 2;
+        double area = Math.sqrt(p * (p - a) * (p - b) * (p - a));
+        
+        if ( a < (b + c) && b < (a + c) && c < (b + a)) {
+            if (a == b && b == c) {
+                tipoLabel5.setText("Tipo encontrado: Triangulo Equilatero");
+                  areaLabel.setText("Área: " + area);
+                
+            } else if (a != b && b == c || b != c && c == a || c != a && c == b) {
+                tipoLabel5.setText("Tipo encontrado: Triangulo Isosceles");
+                areaLabel.setText("Área: " + area);
+                
+            } else {
+                tipoLabel5.setText("Tipo encontrado: Triangulo Escaleno");
+                areaLabel.setText("Área: " + area);
+            }
+            
+        } else tipoLabel5.setText("Não é um triangulo");
+        }
+        
+        
+        
+        
         double a = Double.parseDouble(jTextField1.getText());
          double b = Double.parseDouble(jTextField2.getText());
           double c = Double.parseDouble(jTextField3.getText());
@@ -205,6 +250,7 @@ public class TriangulosUI extends javax.swing.JFrame {
         } else tipoLabel5.setText("Não é um triangulo");
     }//GEN-LAST:event_calcActionPerformed
 
+    
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         jTextField1.setText("");
